@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML→长图/PDF 工具 · Cindy奕飒</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="work.css">
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="wnav">
+  <a class="wback" href="../index.html#projects" data-i18n="back">← 返回作品集</a>
+  <div class="lang-switch mono" role="group" aria-label="language">
+    <button data-lang="zh" class="active">中</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ja">日</button>
+  </div>
+</nav>
+
+<header class="whero">
+  <span class="wtag" data-i18n="tag">工程工具 · TOOL</span>
+  <h1 class="wtitle">HTML → 长图 / PDF 工具</h1>
+  <div class="wmeta"><span>⏱ 2026-07-14</span><span>Python · Playwright</span><span data-i18n="status">● 已上线，日常在用</span></div>
+  <p class="wlead" data-i18n="lead">任何网页报告，一条命令变成「能直接发群的高清长图」+「不被切碎的单页长版 PDF」。</p>
+  <div class="wbtns">
+    <a class="btn btn-primary mono" href="https://github.com/cindyhan9688-cyber/html2pdf-tool" target="_blank" rel="noopener" data-i18n="repo">GitHub 代码仓库 →</a>
+    <a class="btn btn-ghost mono" href="../index.html#projects" data-i18n="back2">返回</a>
+  </div>
+</header>
+
+<section class="wsec">
+  <h2 data-i18n="t1">产品思路</h2>
+  <p class="wsec-sub" data-i18n="t1sub">为什么做、怎么取舍、做完带来什么。</p>
+  <div class="think-grid">
+    <div class="think-card"><b>WHY</b><h3 data-i18n="w1h">解决真痛点</h3><p data-i18n="w1p">网页报告分享一直很别扭：发链接对方打不开，截屏太糊，浏览器打印 PDF 又被切成十几页碎片。我要的是"一条命令，直接拿到能发微信群的成品"。</p></div>
+    <div class="think-card"><b>HOW</b><h3 data-i18n="w2h">克制的设计</h3><p data-i18n="w2p">单文件零配置；优先复用本机 Chrome/Edge 内核，绕开国内下载浏览器内核卡死的坑；PDF 按内容实际高度输出"单页长版"而非 A4 分页；只留 --dark / --width / --scale 三个参数，覆盖 95% 场景。</p></div>
+    <div class="think-card"><b>RESULT</b><h3 data-i18n="w3h">成为基础设施</h3><p data-i18n="w3p">现在是我个人工作流的底层工具：旅游攻略、分析报告、数据周报全部一键出图；2 倍清晰度长图直接发群不糊，PDF 永远一页到底。</p></div>
+  </div>
+</section>
+
+<section class="wsec">
+  <h2 data-i18n="t2">使用方式</h2>
+  <p class="wsec-sub" data-i18n="t2sub">一条命令，两个成品。</p>
+  <div class="term">
+    <div class="cmd">python html_export.py report.html</div>
+    <div class="ok">OK PNG: report.png&nbsp;&nbsp;(158 KB)</div>
+    <div class="ok">OK PDF: report.pdf&nbsp;&nbsp;(93 KB)</div>
+  </div>
+  <ul class="tech-list">
+    <li><b>内核回退链</b> <span data-i18n="k1">：chrome → msedge → chromium 依次尝试，无需 playwright install 也能跑</span></li>
+    <li><b>emulate_media("screen")</b> <span data-i18n="k2">：PDF 保留屏幕配色和背景，而不是惨白的打印样式</span></li>
+    <li><b data-i18n="k3b">按内容高度出单页 PDF</b> <span data-i18n="k3">：读取页面实际 scrollHeight 作为纸张高度，长报告不分页</span></li>
+    <li><b>device_scale_factor=2</b> <span data-i18n="k4">：长图默认 2 倍清晰度，微信里放大看文字仍然锐利</span></li>
+  </ul>
+</section>
+
+<section class="wsec">
+  <h2 data-i18n="t3">成品展示</h2>
+  <p class="wsec-sub" data-i18n="t3sub">下图就是用这个工具自己导出的演示报告长图。</p>
+  <figure class="shot">
+    <img id="demoImg" src="../assets/work/html2pdf-demo.png" alt="html2pdf demo output" loading="lazy">
+    <figcaption data-i18n="cap1">↑ 一条命令导出的高清长图成品（演示报告 · 900px 宽 · 2x）</figcaption>
+  </figure>
+</section>
+
+<footer class="wfoot"><span data-i18n="foot">Cindy奕飒 × AI 结对构建</span></footer>
+
+<script>
+const W = {
+  zh: { back:"← 返回作品集", back2:"返回", tag:"工程工具 · TOOL", status:"● 已上线，日常在用",
+    lead:"任何网页报告，一条命令变成「能直接发群的高清长图」+「不被切碎的单页长版 PDF」。",
+    repo:"GitHub 代码仓库 →",
+    t1:"产品思路", t1sub:"为什么做、怎么取舍、做完带来什么。",
+    w1h:"解决真痛点", w1p:"网页报告分享一直很别扭：发链接对方打不开，截屏太糊，浏览器打印 PDF 又被切成十几页碎片。我要的是“一条命令，直接拿到能发微信群的成品”。",
+    w2h:"克制的设计", w2p:"单文件零配置；优先复用本机 Chrome/Edge 内核，绕开国内下载浏览器内核卡死的坑；PDF 按内容实际高度输出“单页长版”而非 A4 分页；只留 --dark / --width / --scale 三个参数，覆盖 95% 场景。",
+    w3h:"成为基础设施", w3p:"现在是我个人工作流的底层工具：旅游攻略、分析报告、数据周报全部一键出图；2 倍清晰度长图直接发群不糊，PDF 永远一页到底。",
+    t2:"使用方式", t2sub:"一条命令，两个成品。",
+    k1:"：chrome → msedge → chromium 依次尝试，无需 playwright install 也能跑",
+    k2:"：PDF 保留屏幕配色和背景，而不是惨白的打印样式",
+    k3b:"按内容高度出单页 PDF", k3:"：读取页面实际 scrollHeight 作为纸张高度，长报告不分页",
+    k4:"：长图默认 2 倍清晰度，微信里放大看文字仍然锐利",
+    t3:"成品展示", t3sub:"下图就是用这个工具自己导出的演示报告长图。",
+    cap1:"↑ 一条命令导出的高清长图成品（演示报告 · 900px 宽 · 2x）",
+    foot:"Cindy奕飒 × AI 结对构建" },
+  en: { back:"← Back to portfolio", back2:"Back", tag:"TOOL", status:"● shipped, in daily use",
+    lead:"Turn any web report into a share-ready hi-res long image + a single-page PDF that never gets chopped — with one command.",
+    repo:"GitHub repository →",
+    t1:"Product Thinking", t1sub:"Why it exists, the trade-offs, and what it changed.",
+    w1h:"A real pain point", w1p:"Sharing web reports is awkward: links need an environment, screenshots blur, and browser-printed PDFs get sliced into a dozen pages. I wanted one command that outputs something I can drop straight into a group chat.",
+    w2h:"Restrained design", w2p:"Single file, zero config. It reuses the local Chrome/Edge engine to dodge slow headless-browser downloads; PDF height follows the actual content so it stays one page; only three flags — --dark / --width / --scale — cover 95% of cases.",
+    w3h:"Now infrastructure", w3p:"It became the base layer of my workflow: travel guides, analysis reports and weekly dashboards all export through it. 2x-resolution images stay sharp in chat apps; PDFs are always one clean page.",
+    t2:"Usage", t2sub:"One command, two artifacts.",
+    k1:": tries chrome → msedge → chromium in order, works without playwright install",
+    k2:": PDF keeps on-screen colors and backgrounds instead of pale print styles",
+    k3b:"Content-height single-page PDF", k3:": uses the page's real scrollHeight as paper height — no pagination",
+    k4:": images render at 2x by default, text stays sharp when zoomed",
+    t3:"Output", t3sub:"The image below was exported by the tool itself.",
+    cap1:"↑ Hi-res long image exported with one command (demo report · 900px · 2x)",
+    foot:"Built by Cindy Yisa × AI" },
+  ja: { back:"← ポートフォリオへ戻る", back2:"戻る", tag:"ツール", status:"● リリース済・毎日使用中",
+    lead:"どんなWebレポートも、コマンド一つで「そのまま共有できる高解像度ロング画像」と「切れない1ページPDF」に。",
+    repo:"GitHubリポジトリ →",
+    t1:"プロダクト思考", t1sub:"なぜ作ったか、何を割り切ったか、何が変わったか。",
+    w1h:"本物のペインポイント", w1p:"Webレポートの共有はずっと不便でした。リンクは環境依存、スクショはぼやけ、ブラウザ印刷のPDFは十数ページに分断される。欲しかったのは「コマンド一つで、そのままグループに送れる成果物」。",
+    w2h:"抑制の効いた設計", w2p:"単一ファイル・設定ゼロ。ローカルのChrome/Edgeエンジンを再利用してダウンロードの詰まりを回避。PDFはコンテンツの実際の高さで1ページ出力。フラグは --dark / --width / --scale の3つだけで95%のケースをカバー。",
+    w3h:"インフラになった", w3p:"今では個人ワークフローの基盤ツール。旅行ガイド、分析レポート、週報すべてワンコマンドで出力。2倍解像度でチャットでも文字がくっきり、PDFは常に1ページ。",
+    t2:"使い方", t2sub:"コマンド一つ、成果物二つ。",
+    k1:"：chrome → msedge → chromium の順に試行、playwright install 不要",
+    k2:"：PDFは画面の配色と背景を保持、白っぽい印刷スタイルにしない",
+    k3b:"コンテンツ高さの1ページPDF", k3:"：ページの実際のscrollHeightを用紙高さに使用、改ページなし",
+    k4:"：画像はデフォルト2倍解像度、拡大しても文字が鮮明",
+    t3:"成果物", t3sub:"下の画像はこのツール自身で書き出したデモレポート。",
+    cap1:"↑ ワンコマンドで書き出した高解像度ロング画像（デモ · 900px · 2x）",
+    foot:"Cindy奕飒 × AI ペアで構築" }
+};
+let lang = localStorage.getItem("cindy-lang") || "zh";
+// 演示图三语版本：随语言切换（图本身是本工具生成的，三版都是真实导出成品）
+const DEMO_IMG = {
+  zh: "../assets/work/html2pdf-demo.png",
+  en: "../assets/work/html2pdf-demo-en.png",
+  ja: "../assets/work/html2pdf-demo-ja.png"
+};
+function apply(){
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = W[lang][el.dataset.i18n]; if (v) el.textContent = v; });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  const di = document.getElementById("demoImg");
+  if (di) di.src = DEMO_IMG[lang] || DEMO_IMG.zh;
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang; localStorage.setItem("cindy-lang", lang); apply();
+}));
+apply();
+/* 🍓 点击迸发 */
+addEventListener("pointerdown", e => {
+  for (let i = 0; i < 12; i++){
+    const berry = i % 3 === 0;
+    const el = document.createElement("span");
+    el.className = "bp " + (berry ? "bp-berry" : "bp-spark");
+    if (berry) el.textContent = "🍓";
+    el.style.left = e.clientX + "px"; el.style.top = e.clientY + "px";
+    document.body.appendChild(el);
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 75;
+    el.animate([
+      { transform: "translate(-50%,-50%) scale(1)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${Math.cos(a)*d}px), calc(-50% + ${Math.sin(a)*d + 46}px)) scale(${berry ? 1.15 : 0.35})`, opacity: 0 }
+    ], { duration: 650 + Math.random() * 450, easing: "cubic-bezier(.16,.8,.3,1)" }).onfinish = () => el.remove();
+  }
+});
+</script>
+</body>
+</html>

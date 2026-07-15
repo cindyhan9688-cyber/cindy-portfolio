@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赛博闺蜜平台协作 · Cindy奕飒</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="work.css">
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="wnav">
+  <a class="wback" href="../index.html#projects" data-i18n="back">← 返回作品集</a>
+  <div class="lang-switch mono" role="group" aria-label="language">
+    <button data-lang="zh" class="active">中</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ja">日</button>
+  </div>
+</nav>
+
+<header class="whero">
+  <span class="wtag" data-i18n="tag">AI 产品 · 平台协作</span>
+  <h1 class="wtitle" data-i18n="title">赛博闺蜜平台协作</h1>
+  <div class="wmeta"><span>⏱ 2026-07-12</span><span data-i18n="role">协作贡献者 · 8 个三语技能</span></div>
+  <p class="wlead" data-i18n="lead">参与一个面向女生的 AI 陪伴平台开发，贡献情绪、职场、理财、育儿等 8 个中/英/日三语技能。以下为平台公开页面 UI。</p>
+  <div class="wbtns">
+    <a class="btn btn-ghost mono" href="../index.html#projects" data-i18n="back2">返回</a>
+  </div>
+</header>
+
+<section class="wsec">
+  <h2 data-i18n="t1">产品 UI 界面</h2>
+  <p class="wsec-sub" data-i18n="t1sub">平台公开落地页（平台代码为私有仓库，不公开展示）。</p>
+  <figure class="shot">
+    <img id="gImg1" src="../assets/work/guimi-hero.png" alt="platform landing hero" loading="lazy">
+    <figcaption data-i18n="cap1">↑ 落地页首屏：总台闺蜜「闺闺」按需求把用户分流给擅长的 agent</figcaption>
+  </figure>
+  <figure class="shot">
+    <img id="gImg2" src="../assets/work/guimi-agents.png" alt="platform agent matrix" loading="lazy">
+    <figcaption data-i18n="cap2">↑ agent 功能矩阵：记忆管家 / 圈子搭子 / 出图师 / 纪念日精灵 / 跑腿小妹 / 情绪树洞</figcaption>
+  </figure>
+</section>
+
+<footer class="wfoot"><span data-i18n="foot">Cindy奕飒 × AI 结对构建</span></footer>
+
+<script>
+const W = {
+  zh: { back:"← 返回作品集", back2:"返回", tag:"AI 产品 · 平台协作", title:"赛博闺蜜平台协作",
+    role:"协作贡献者 · 8 个三语技能",
+    lead:"参与一个面向女生的 AI 陪伴平台开发，贡献情绪、职场、理财、育儿等 8 个中/英/日三语技能。以下为平台公开页面 UI。",
+    t1:"产品 UI 界面", t1sub:"平台公开落地页（平台代码为私有仓库，不公开展示）。",
+    cap1:"↑ 落地页首屏：总台闺蜜「闺闺」按需求把用户分流给擅长的 agent",
+    cap2:"↑ agent 功能矩阵：记忆管家 / 圈子搭子 / 出图师 / 纪念日精灵 / 跑腿小妹 / 情绪树洞",
+    foot:"Cindy奕飒 × AI 结对构建" },
+  en: { back:"← Back to portfolio", back2:"Back", tag:"AI PRODUCT · COLLAB", title:"Cyber-Bestie Platform",
+    role:"Contributor · 8 trilingual skills",
+    lead:"Contributed to an AI companion platform for women: 8 trilingual (zh/en/ja) skills covering emotions, career, money and parenting. Below is the platform's public landing UI.",
+    t1:"Product UI", t1sub:"Public landing page. English views are faithful recreations for reference — the live product UI is in Chinese. (Platform code lives in a private repository.)",
+    cap1:"↑ Landing hero: a concierge agent routes each user to the right specialist agent (EN recreation)",
+    cap2:"↑ Agent matrix: memory keeper / circle buddy / image maker / anniversary elf / errand girl / emotion tree-hollow (EN recreation)",
+    foot:"Built by Cindy Yisa × AI" },
+  ja: { back:"← ポートフォリオへ戻る", back2:"戻る", tag:"AIプロダクト · コラボ", title:"サイバー親友プラットフォーム",
+    role:"コントリビューター · 三言語スキル8本",
+    lead:"女性向けAIコンパニオン・プラットフォームの開発に参加。感情・キャリア・お金・育児など、中/英/日の三言語スキルを8本提供。以下は公開ランディングページのUI。",
+    t1:"プロダクトUI", t1sub:"公開ランディングページ。日本語表示は参考用の再現版で、実際の製品UIは中国語です。（コードは非公開リポジトリ。）",
+    cap1:"↑ ファーストビュー：コンシェルジュagentが最適なagentへ振り分け（日本語再現版）",
+    cap2:"↑ agentマトリクス：記憶係 / サークル相棒 / 画像職人 / 記念日エルフ / お使いガール / 感情の木の洞（日本語再現版）",
+    foot:"Cindy奕飒 × AI ペアで構築" }
+};
+let lang = localStorage.getItem("cindy-lang") || "zh";
+// 截图随语言切换：中文=真实产品截图；EN/日=按原版式样重绘的翻译示意版（图注已标注）
+const G_IMG = {
+  gImg1: { zh:"../assets/work/guimi-hero.png",   en:"../assets/work/guimi-hero-en.png",   ja:"../assets/work/guimi-hero-ja.png" },
+  gImg2: { zh:"../assets/work/guimi-agents.png", en:"../assets/work/guimi-agents-en.png", ja:"../assets/work/guimi-agents-ja.png" }
+};
+function apply(){
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = W[lang][el.dataset.i18n]; if (v) el.textContent = v; });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  Object.entries(G_IMG).forEach(([id, map]) => {
+    const el = document.getElementById(id);
+    if (el){ el.onerror = () => { el.onerror = null; el.src = map.zh; }; el.src = map[lang] || map.zh; }
+  });
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang; localStorage.setItem("cindy-lang", lang); apply();
+}));
+apply();
+addEventListener("pointerdown", e => {
+  for (let i = 0; i < 12; i++){
+    const berry = i % 3 === 0;
+    const el = document.createElement("span");
+    el.className = "bp " + (berry ? "bp-berry" : "bp-spark");
+    if (berry) el.textContent = "🍓";
+    el.style.left = e.clientX + "px"; el.style.top = e.clientY + "px";
+    document.body.appendChild(el);
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 75;
+    el.animate([
+      { transform: "translate(-50%,-50%) scale(1)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${Math.cos(a)*d}px), calc(-50% + ${Math.sin(a)*d + 46}px)) scale(${berry ? 1.15 : 0.35})`, opacity: 0 }
+    ], { duration: 650 + Math.random() * 450, easing: "cubic-bezier(.16,.8,.3,1)" }).onfinish = () => el.remove();
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cindy奕飒 · 和 AI 一起成长 | Growing with AI</title>
+<meta name="description" content="Cindy奕飒的个人作品集 — 和 AI 一起成长的 10000 小时之路。Personal portfolio of Cindy Yisa, pair-built with AI.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark">◈</span>
+    <span class="brand-text mono">CINDY.YISA<span class="blink">_</span></span>
+  </a>
+  <div class="nav-links mono">
+    <a href="#time" data-i18n="nav.time">时间</a>
+    <a href="#heatmap" data-i18n="nav.heatmap">和AI成长热力图</a>
+    <a href="#finance" data-i18n="nav.finance">金融技能</a>
+    <a href="#projects" data-i18n="nav.projects">作品</a>
+    <a href="#contact" data-i18n="nav.contact">联系</a>
+  </div>
+  <div class="lang-switch mono" role="group" aria-label="language">
+    <button data-lang="zh" class="active">中</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ja">日</button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="kicker mono reveal">// PORTFOLIO v1.0 — HUMAN × AI PAIR BUILD</p>
+      <h1 class="greeting reveal"><span id="typed"></span><span class="caret" aria-hidden="true"></span></h1>
+      <p class="slogan reveal"><span class="slogan-line" data-i18n="hero.slogan">和 AI 一起成长</span></p>
+      <p class="hero-sub reveal" data-i18n="hero.sub">这里的每一件作品，都是我和 AI 结对完成的。</p>
+
+      <div class="hours-box reveal">
+        <div class="hours-top mono">
+          <span data-i18n="hours.label">与 AI 共同度过</span>
+          <span class="hours-asof"><span data-i18n="hours.asof">数据截至</span> <span id="asofDate">2026-07-14</span></span>
+        </div>
+        <div class="hours-main">
+          <span class="hours-num mono" id="hoursNum">0.0</span>
+          <span class="hours-unit mono">h <em>/ 10,000 h</em></span>
+        </div>
+        <div class="hours-bar"><div class="hours-fill" id="hoursFill"></div></div>
+        <div class="hours-foot mono">
+          <span id="hoursPct">0%</span>
+          <span id="hoursSplit"></span>
+        </div>
+      </div>
+
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary mono" href="#projects" data-i18n="cta.works">查看作品 →</a>
+        <a class="btn btn-ghost mono" href="#contact" data-i18n="cta.contact">联系我</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="tilt-scene" id="tiltScene">
+        <div class="tilt-card" id="tiltCard">
+          <div class="tilt-glow" aria-hidden="true"></div>
+          <img class="tilt-img" src="assets/avatar.jpg" alt="Cindy奕飒 avatar illustration">
+          <div class="orbit" aria-hidden="false">
+            <div class="orb orb-1"><span class="orb-arm"><span class="tilt-chip mono"><b id="chipHours">3,117.8</b>h <span data-i18n="chip.together">同行</span></span></span></div>
+            <div class="orb orb-2"><span class="orb-arm"><span class="tilt-chip mono"><b id="chipSessions">78</b> <span data-i18n="chip.talks">对话</span></span></span></div>
+            <div class="orb orb-3"><span class="orb-arm"><span class="tilt-chip mono"><span class="dot-live"></span><span data-i18n="chip.growing">成长中</span></span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker mono" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+</header>
+
+<main>
+<!-- ============ 01 TIME ============ -->
+<section class="section" id="time">
+  <div class="section-head reveal">
+    <span class="sec-no mono">01</span>
+    <h2 data-i18n="time.title">时间在流动</h2>
+    <p class="sec-sub" data-i18n="time.sub">每一秒都像流沙——抓不住，但可以用来成长。</p>
+  </div>
+  <div class="time-grid">
+    <div class="time-card sand-card reveal">
+      <canvas id="sandCanvas" width="360" height="460" aria-label="today hourglass animation"></canvas>
+      <div class="sand-caption mono" data-i18n="time.sand">今日沙漏 · 按今天已流逝的时间实时漏沙</div>
+    </div>
+    <div class="time-card clock-card reveal">
+      <div class="clock-label mono" data-i18n="time.now">此刻</div>
+      <div class="clock-shell">
+        <div class="clock-big mono" id="clockBig">00:00:00</div>
+        <div class="clock-sub mono"><span id="clockMs">000</span><span class="clock-tz">UTC+8 · LIVE</span></div>
+      </div>
+      <div class="clock-date mono" id="clockDate">—</div>
+      <div class="day-flow">
+        <div class="day-flow-top mono"><span data-i18n="time.today">今天已流逝</span><span id="dayPct">0.000000%</span></div>
+        <div class="day-bar"><div class="day-fill" id="dayFill"></div></div>
+      </div>
+      <div class="since-box">
+        <div class="clock-label mono" data-i18n="time.since">距离我们第一次对话</div>
+        <div class="since-big mono" id="sinceBig">—</div>
+        <div class="since-src mono">first contact: 2026-07-07 03:02 (UTC+8)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 HEATMAP ============ -->
+<section class="section" id="heatmap">
+  <div class="section-head reveal">
+    <span class="sec-no mono">02</span>
+    <h2 data-i18n="hm.title">每日训练AI成长热力图</h2>
+    <p class="sec-sub" data-i18n="hm.sub">颜色越深 = 那天我和 AI 聊得越多。数据来自真实会话记录，一格都没编。</p>
+  </div>
+  <div class="hm-wrap reveal">
+    <div class="hm-scroll">
+      <div class="hm-months mono" id="hmMonths"></div>
+      <div class="hm-body">
+        <div class="hm-days mono" id="hmDays"></div>
+        <div class="hm-grid" id="hmGrid"></div>
+      </div>
+    </div>
+    <div class="hm-legend mono">
+      <span data-i18n="hm.less">少</span>
+      <i class="cell l0"></i><i class="cell l1"></i><i class="cell l2"></i><i class="cell l3"></i><i class="cell l4"></i>
+      <span data-i18n="hm.more">多</span>
+    </div>
+  </div>
+  <div class="stat-row reveal">
+    <div class="stat"><b class="mono" id="stEvents">15,353</b><span data-i18n="st.events">消息事件</span></div>
+    <div class="stat"><b class="mono" id="stSessions">78</b><span data-i18n="st.sessions">会话</span></div>
+    <div class="stat"><b class="mono" id="stDays">8</b><span data-i18n="st.days">活跃天数</span></div>
+    <div class="stat"><b class="mono" id="stPeak">2,727</b><span data-i18n="st.peak">单日峰值 · 07-08</span></div>
+  </div>
+  <div class="hm-tip mono" id="hmTip" role="tooltip"></div>
+</section>
+
+<!-- ============ 03 FINANCE (featured) ============ -->
+<section class="section section-fin deco-b" id="finance">
+  <div class="fin-deco" aria-hidden="true">
+    <span class="fd-beam1"></span><span class="fd-beam2"></span><span class="fd-star"></span>
+    <span class="fd-dots"></span>
+    <svg class="fd-chart" width="340" height="200" viewBox="0 0 340 200" fill="none">
+      <defs><linearGradient id="fdg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#3b6cff"/><stop offset="1" stop-color="#3b6cff" stop-opacity="0"/></linearGradient></defs>
+      <path d="M0 168 L42 144 L84 154 L126 104 L168 118 L210 68 L252 84 L294 34 L340 46 L340 200 L0 200Z" fill="url(#fdg)" opacity=".22"/>
+      <path d="M0 168 L42 144 L84 154 L126 104 L168 118 L210 68 L252 84 L294 34 L340 46" stroke="#1249e2" stroke-width="2.4" stroke-linejoin="round"/>
+      <circle cx="294" cy="34" r="5" fill="#3b6cff"/><circle cx="294" cy="34" r="11" fill="#3b6cff" opacity=".22"/>
+    </svg>
+  </div>
+  <div class="section-head reveal">
+    <span class="sec-no mono">03</span>
+    <h2 data-i18n="fin.title">金融技能 · Finance Arsenal</h2>
+    <p class="sec-sub" data-i18n="fin.sub">重点板块。多条金融分析线 + 数据工具，每条都是一个可复用的分析引擎。</p>
+  </div>
+  <div class="fin-stack reveal">
+    <div class="fin-sheet" id="finGrid"></div>
+  </div>
+  <p class="fin-note mono reveal" data-i18n="fin.note">⚠ 以上均为学习研究用途，不构成投资建议。</p>
+</section>
+
+<!-- ============ 04 PROJECTS ============ -->
+<section class="section" id="projects">
+  <div class="section-head reveal">
+    <span class="sec-no mono">04</span>
+    <h2 data-i18n="pj.title">全部作品</h2>
+    <p class="sec-sub" data-i18n="pj.sub">按真实时间戳排列——每一张卡片，都对应一段我和 AI 的对话。</p>
+  </div>
+  <div class="pj-filter mono" id="pjFilter"></div>
+  <div class="pj-grid" id="pjGrid"></div>
+</section>
+
+<!-- ============ 05 CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="section-head reveal">
+    <span class="sec-no mono">05</span>
+    <h2 data-i18n="ct.title">联系我</h2>
+    <p class="sec-sub" data-i18n="ct.sub">想聊 AI、金融、产品，或者只是打个招呼——都欢迎。</p>
+  </div>
+  <div class="contact-wrap reveal">
+    <form class="contact-form" id="msgForm" autocomplete="off">
+      <div class="cf-row">
+        <input class="cf-input mono" type="text" name="name" id="cfName" required maxlength="60" placeholder="你的称呼">
+        <input class="cf-input mono" type="text" name="reply_to" id="cfReply" required maxlength="120" placeholder="你的邮箱或联系方式">
+      </div>
+      <textarea class="cf-input mono" name="message" id="cfMsg" rows="6" required maxlength="2000" placeholder="想对我说的话…"></textarea>
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="cf-foot">
+        <button class="btn btn-primary mono" type="submit" id="cfSend" data-i18n="ct.send">发送留言</button>
+        <span class="cf-status mono" id="cfStatus"></span>
+      </div>
+    </form>
+    <div class="contact-side">
+      <span class="mono contact-label">EMAIL</span>
+      <a class="mono contact-addr" href="mailto:cindyhan9688@gmail.com">cindyhan9688@gmail.com</a>
+      <button class="btn btn-ghost mono" id="copyMail" data-i18n="ct.copy">复制邮箱</button>
+      <p class="cf-note" data-i18n="ct.note">留言会直接送达我的 Gmail 收件箱。</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer mono">
+  <p><span data-i18n="ft.built">本站由 Cindy奕飒 × AI 结对构建</span> · <span data-i18n="ft.data">全部数据可回溯至本机会话记录</span></p>
+  <p class="footer-dim">© 2026 Cindy Yisa · growing with AI</p>
+</footer>
+
+<script src="stats.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* 作品详情页共用样式（依赖 ../style.css 的变量与基础） */
+.wnav{
+  position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:20px;
+  padding:14px 32px;background:rgba(247,249,255,.85);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.wback{font-family:var(--mono);font-size:12.5px;color:var(--dim);transition:color .2s}
+.wback:hover{color:var(--blue)}
+.wnav .lang-switch{margin-left:auto}
+
+.whero{max-width:960px;margin:0 auto;padding:130px 32px 10px}
+.wtag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--blue);background:var(--tint1);border-radius:6px;padding:4px 10px}
+.wtitle{font-size:clamp(28px,4vw,40px);margin-top:16px;letter-spacing:.01em}
+.wmeta{display:flex;gap:18px;margin-top:10px;font-family:var(--mono);font-size:12px;color:#9aa8c8;flex-wrap:wrap}
+.wlead{margin-top:14px;color:var(--dim);font-size:15px;max-width:640px}
+.wbtns{display:flex;gap:14px;margin-top:24px;flex-wrap:wrap}
+
+.wsec{max-width:960px;margin:0 auto;padding:44px 32px 6px}
+.wsec>h2{font-size:20px;margin-bottom:6px}
+.wsec>h2::before{content:"// ";color:var(--tint3);font-family:var(--mono);font-size:15px}
+.wsec-sub{color:var(--dim);font-size:13px;margin-bottom:22px}
+
+.think-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.think-card{border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:22px}
+.think-card b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--blue);margin-bottom:10px}
+.think-card h3{font-size:15.5px;margin-bottom:8px}
+.think-card p{font-size:13px;color:var(--dim);line-height:1.8}
+
+.term{
+  background:#0a1633;border-radius:12px;padding:20px 22px;font-family:var(--mono);
+  font-size:13px;line-height:1.9;color:#cddcff;overflow-x:auto;border:1px solid #22346e;
+}
+.term .cmd{color:#fff}
+.term .cmd::before{content:"$ ";color:#3b6cff}
+.term .ok{color:#4ade80}
+.tech-list{margin-top:18px;display:grid;gap:10px}
+.tech-list li{
+  list-style:none;font-size:13px;color:var(--dim);padding:12px 16px;background:#fff;
+  border:1px solid var(--line);border-radius:10px;line-height:1.7;
+}
+.tech-list li b{color:var(--ink)}
+
+.shot{margin-bottom:26px}
+.shot img{
+  width:100%;display:block;border-radius:var(--r);border:1px solid var(--line);
+  box-shadow:0 20px 50px -24px rgba(18,73,226,.35);
+}
+.shot figcaption{font-family:var(--mono);font-size:11.5px;color:#9aa8c8;margin-top:10px;letter-spacing:.06em}
+
+.wnote{
+  max-width:960px;margin:30px auto 0;padding:0 32px;
+  font-family:var(--mono);font-size:11.5px;color:#8194bd;letter-spacing:.04em;
+}
+.wfoot{border-top:1px solid var(--line);margin-top:80px;padding:30px;text-align:center;font-family:var(--mono);font-size:12px;color:var(--dim)}
+
+@media (max-width:760px){
+  .think-grid{grid-template-columns:1fr}
+  .whero{padding-top:110px}
+}
