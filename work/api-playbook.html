@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API 接入通用流程 · Cindy奕飒</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="work.css">
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="wnav">
+  <a class="wback" href="../index.html#projects" data-i18n="back">← 返回作品集</a>
+  <div class="lang-switch mono" role="group" aria-label="language">
+    <button data-lang="zh" class="active">中</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ja">日</button>
+  </div>
+</nav>
+
+<header class="whero">
+  <span class="wtag" data-i18n="tag">工程工具 · 方法论</span>
+  <h1 class="wtitle" data-i18n="title">API 接入通用流程</h1>
+  <div class="wmeta"><span>⏱ 2026-07-10</span><span data-i18n="stack">Claude Skill</span></div>
+  <p class="wlead" data-i18n="lead">不管接哪个平台的 API，流程都是同一套七步——从"定目标"到"接进项目"，配平台速查表和状态码排错手册。</p>
+  <div class="wbtns">
+    <a class="btn btn-primary mono" href="https://github.com/cindyhan9688-cyber/api-integration-playbook" target="_blank" rel="noopener" data-i18n="repo">GitHub 代码仓库 →</a>
+    <a class="btn btn-ghost mono" href="../index.html#projects" data-i18n="back2">返回</a>
+  </div>
+</header>
+
+<section class="wsec">
+  <h2 data-i18n="t1">产品思路</h2>
+  <p class="wsec-sub" data-i18n="t1sub">为什么做、怎么取舍、做完带来什么。</p>
+  <div class="think-grid">
+    <div class="think-card"><b>WHY</b><h3 data-i18n="w1h">每次接 API 都在重复踩坑</h3><p data-i18n="w1p">接 AI 大模型、交易所、聊天机器人……不同平台文档风格千差万别，但认证方式、报错排查的底层逻辑其实高度重复。把这套共性提炼出来，接新平台时不用每次从零摸索。</p></div>
+    <div class="think-card"><b>HOW</b><h3 data-i18n="w2h">七步流水线 + 速查表</h3><p data-i18n="w2p">定目标→找文档→拿钥匙→认证方式→找端点→小测试→接进项目。铁律是"钥匙绝不写进代码"和"报错先看状态码"。附带平台速查表和排错手册，覆盖大模型/聊天机器人/交易所/数据/图像语音等常见平台。</p></div>
+    <div class="think-card"><b>RESULT</b><h3 data-i18n="w3h">接入速度稳定可复制</h3><p data-i18n="w3p">现在接任何新平台，第一步就是走这套流程，不再凭感觉摸索认证方式，报错也能按状态码分类快速定位。</p></div>
+  </div>
+</section>
+
+<section class="wsec">
+  <h2 data-i18n="t2">成品展示</h2>
+  <p class="wsec-sub" data-i18n="t2sub">七步流水线 + 逻辑速记表。</p>
+  <figure class="shot">
+    <img id="apiImg" src="../assets/work/api-playbook-ui.png" alt="api playbook flow" loading="lazy">
+    <figcaption data-i18n="cap1">↑ 七步流水线 + 每步的输出物和最常见的坑</figcaption>
+  </figure>
+</section>
+
+<footer class="wfoot"><span data-i18n="foot">Cindy奕飒 × AI 结对构建</span></footer>
+
+<script>
+const W = {
+  zh: { back:"← 返回作品集", back2:"返回", tag:"工程工具 · 方法论", title:"API 接入通用流程", stack:"Claude Skill", repo:"GitHub 代码仓库 →",
+    lead:"不管接哪个平台的 API，流程都是同一套七步——从“定目标”到“接进项目”，配平台速查表和状态码排错手册。",
+    t1:"产品思路", t1sub:"为什么做、怎么取舍、做完带来什么。",
+    w1h:"每次接 API 都在重复踩坑", w1p:"接 AI 大模型、交易所、聊天机器人……不同平台文档风格千差万别，但认证方式、报错排查的底层逻辑其实高度重复。把这套共性提炼出来，接新平台时不用每次从零摸索。",
+    w2h:"七步流水线 + 速查表", w2p:"定目标→找文档→拿钥匙→认证方式→找端点→小测试→接进项目。铁律是“钥匙绝不写进代码”和“报错先看状态码”。附带平台速查表和排错手册，覆盖大模型/聊天机器人/交易所/数据/图像语音等常见平台。",
+    w3h:"接入速度稳定可复制", w3p:"现在接任何新平台，第一步就是走这套流程，不再凭感觉摸索认证方式，报错也能按状态码分类快速定位。",
+    t2:"成品展示", t2sub:"七步流水线 + 逻辑速记表。",
+    cap1:"↑ 七步流水线 + 每步的输出物和最常见的坑",
+    foot:"Cindy奕飒 × AI 结对构建" },
+  en: { back:"← Back to portfolio", back2:"Back", tag:"TOOL · METHODOLOGY", title:"API Integration Playbook", stack:"Claude Skill", repo:"GitHub repository →",
+    lead:"No matter which platform's API — the process is the same seven steps, from “define the goal” to “ship it”, backed by a platform cheat sheet and an error-code troubleshooting manual.",
+    t1:"Product Thinking", t1sub:"Why it exists, the trade-offs, what it changed.",
+    w1h:"Same pitfalls, every new API", w1p:"AI models, exchanges, chatbots — docs styles vary wildly, but the underlying logic of auth and error handling repeats constantly. Distilling that pattern means never starting from zero again.",
+    w2h:"7-step pipeline + cheat sheet", w2p:"Define goal → find docs → get keys → nail auth → find endpoint → smoke test → integrate. Iron rules: keys never go in code, and check the status code before guessing. Comes with a platform cheat sheet and troubleshooting manual covering AI models, chatbots, exchanges, data/search, and image/voice platforms.",
+    w3h:"Consistent, repeatable speed", w3p:"Now every new platform starts with this pipeline — no more guessing at auth methods, and errors get triaged by status code instantly.",
+    t2:"Output", t2sub:"The 7-step pipeline + quick-reference table.",
+    cap1:"↑ 7-step pipeline with the output and common pitfall for each step",
+    foot:"Built by Cindy Yisa × AI" },
+  ja: { back:"← ポートフォリオへ戻る", back2:"戻る", tag:"ツール · 方法論", title:"API接続プレイブック", stack:"Claude Skill", repo:"GitHubリポジトリ →",
+    lead:"どのプラットフォームのAPIでも同じ7ステップ——「目標設定」から「組み込み」まで、プラットフォーム早見表とエラーコード対処マニュアル付き。",
+    t1:"プロダクト思考", t1sub:"なぜ作ったか、何を割り切ったか、何が変わったか。",
+    w1h:"毎回同じ落とし穴を踏む", w1p:"AIモデル、取引所、チャットボット……ドキュメントのスタイルは様々だが、認証とエラー対処の根底ロジックは驚くほど共通。この共通パターンを抽出すれば、新プラットフォームでもゼロから探る必要がない。",
+    w2h:"7ステップ+早見表", w2p:"目標設定→文書検索→鍵取得→認証方式→エンドポイント→スモークテスト→組み込み。鉄則は「鍵は絶対コードに書かない」「エラーはまずステータスコードを見る」。AIモデル/チャットボット/取引所/データ/画像音声など主要プラットフォームの早見表と対処マニュアル付き。",
+    w3h:"安定して再現可能な速度", w3p:"今では新しいプラットフォームに接続する第一歩がこのパイプライン。認証方式を勘で探ることもなく、エラーもステータスコード別に即座に切り分けられる。",
+    t2:"成果物", t2sub:"7ステップパイプライン+ロジック早見表。",
+    cap1:"↑ 7ステップパイプライン、各ステップの成果物と落とし穴",
+    foot:"Cindy奕飒 × AI ペアで構築" }
+};
+let lang = localStorage.getItem("cindy-lang") || "zh";
+const IMG = { zh:"../assets/work/api-playbook-ui.png", en:"../assets/work/api-playbook-ui-en.png", ja:"../assets/work/api-playbook-ui-ja.png" };
+function apply(){
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = W[lang][el.dataset.i18n]; if (v) el.textContent = v; });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  const im = document.getElementById("apiImg");
+  if (im){ im.onerror = () => { im.onerror = null; im.src = IMG.zh; }; im.src = IMG[lang] || IMG.zh; }
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang; localStorage.setItem("cindy-lang", lang); apply();
+}));
+apply();
+addEventListener("pointerdown", e => {
+  for (let i = 0; i < 12; i++){
+    const berry = i % 3 === 0;
+    const el = document.createElement("span");
+    el.className = "bp " + (berry ? "bp-berry" : "bp-spark");
+    if (berry) el.textContent = "🍓";
+    el.style.left = e.clientX + "px"; el.style.top = e.clientY + "px";
+    document.body.appendChild(el);
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 75;
+    el.animate([
+      { transform: "translate(-50%,-50%) scale(1)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${Math.cos(a)*d}px), calc(-50% + ${Math.sin(a)*d + 46}px)) scale(${berry ? 1.15 : 0.35})`, opacity: 0 }
+    ], { duration: 650 + Math.random() * 450, easing: "cubic-bezier(.16,.8,.3,1)" }).onfinish = () => el.remove();
+  }
+});
+</script>
+</body>
+</html>

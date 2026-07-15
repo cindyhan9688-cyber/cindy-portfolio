@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>多市场联动技术分析 · Cindy奕飒</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="work.css">
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="wnav">
+  <a class="wback" href="../index.html#finance" data-i18n="back">← 返回作品集</a>
+  <div class="lang-switch mono" role="group" aria-label="language">
+    <button data-lang="zh" class="active">中</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ja">日</button>
+  </div>
+</nav>
+
+<header class="whero">
+  <span class="wtag" data-i18n="tag">金融技能 · 私有方法论</span>
+  <h1 class="wtitle" data-i18n="title">多市场联动技术分析</h1>
+  <div class="wmeta"><span>⏱ 2026-07-12</span><span data-i18n="priv">🔒 完整代码不公开</span></div>
+  <p class="wlead" data-i18n="lead">加密/外汇/黄金/原油/美股/美债一屏对照，供需订单块结构 + 按波动率定仓位，给出带止损目标位盈亏比的交易级判断。</p>
+  <div class="wbtns">
+    <a class="btn btn-ghost mono" href="../index.html#finance" data-i18n="back2">返回</a>
+  </div>
+</header>
+
+<section class="wsec">
+  <h2 data-i18n="t1">Skill 说明</h2>
+  <p class="wsec-sub" data-i18n="t1sub">这套流水线在做什么、怎么守规矩。</p>
+  <div class="think-grid">
+    <div class="think-card"><b>核心问题</b><h3 data-i18n="w1h">结构在哪，剧本怎么走</h3><p data-i18n="w1p">输入一个品种/一段行情，输出结构判断（供给区/需求区/顶底转换/真空区）+ 进场/止损/目标/盈亏比/仓位的交易级结论。</p></div>
+    <div class="think-card"><b>核心逻辑</b><h3 data-i18n="w2h">九步骨架 + 仓位纪律</h3><p data-i18n="w2p">资金管理→定位趋势→选周期级别→找信号（供需区/真空区/假突破识别）→止损→盈亏比→减仓推保护→止盈止损→等待下一次信号。仓位按波动率反向配置。</p></div>
+    <div class="think-card"><b>纪律</b><h3 data-i18n="w3h">概率而非确定性</h3><p data-i18n="w3p">强调概率判断、坦诚认错、严格止损；不是投资建议，交易有风险，决策与后果自负。</p></div>
+  </div>
+</section>
+
+<section class="wsec">
+  <h2 data-i18n="t2">代码预览</h2>
+  <p class="wsec-sub" data-i18n="t2sub">这是我的私有方法论资产，只展示模糊的一小段代码证明真实存在，完整逻辑不公开。</p>
+  <figure class="shot">
+    <img id="skImg" src="../assets/work/skill-multimarket.png" alt="blurred skill code preview" loading="lazy">
+    <figcaption data-i18n="cap1">↑ SKILL.md 片段（已模糊处理，完整方法论不对外公开）</figcaption>
+  </figure>
+</section>
+
+<footer class="wfoot"><span data-i18n="foot">Cindy奕飒 × AI 结对构建</span></footer>
+
+<script>
+const W = {
+  zh: { back:"← 返回作品集", back2:"返回", tag:"金融技能 · 私有方法论", title:"多市场联动技术分析", priv:"🔒 完整代码不公开",
+    lead:"加密/外汇/黄金/原油/美股/美债一屏对照，供需订单块结构 + 按波动率定仓位，给出带止损目标位盈亏比的交易级判断。",
+    t1:"Skill 说明", t1sub:"这套流水线在做什么、怎么守规矩。",
+    w1h:"结构在哪，剧本怎么走", w1p:"输入一个品种/一段行情，输出结构判断（供给区/需求区/顶底转换/真空区）+ 进场/止损/目标/盈亏比/仓位的交易级结论。",
+    w2h:"九步骨架 + 仓位纪律", w2p:"资金管理→定位趋势→选周期级别→找信号（供需区/真空区/假突破识别）→止损→盈亏比→减仓推保护→止盈止损→等待下一次信号。仓位按波动率反向配置。",
+    w3h:"概率而非确定性", w3p:"强调概率判断、坦诚认错、严格止损；不是投资建议，交易有风险，决策与后果自负。",
+    t2:"代码预览", t2sub:"这是我的私有方法论资产，只展示模糊的一小段代码证明真实存在，完整逻辑不公开。",
+    cap1:"↑ SKILL.md 片段（已模糊处理，完整方法论不对外公开）",
+    foot:"Cindy奕飒 × AI 结对构建" },
+  en: { back:"← Back to portfolio", back2:"Back", tag:"FINANCE · PRIVATE METHODOLOGY", title:"Multi-Market Structure Analysis", priv:"🔒 Full code not public",
+    lead:"Crypto, FX, gold, oil, equities and bonds on one screen: supply-demand order blocks + volatility-based sizing, producing a trade-level call with stop, target, and risk-reward.",
+    t1:"Skill Description", t1sub:"What this pipeline does and how it stays disciplined.",
+    w1h:"Where's the structure, what's the script", w1p:"Feed it an instrument/a chart, get back a structure read (supply/demand zones, top-bottom reversal, liquidity voids) plus a trade-level call: entry, stop, target, risk-reward, sizing.",
+    w2h:"9-step skeleton + position discipline", w2p:"Money management → locate the trend → pick timeframe → find signals (supply/demand zones, voids, fake-breakout detection) → stop loss → risk-reward → scale out & protect → close → wait for the next signal. Position size runs inverse to volatility.",
+    w3h:"Probability, not certainty", w3p:"Emphasizes probabilistic thinking, honest error admission, strict stop-losses; not investment advice — trading carries risk, decisions and consequences are the user's own.",
+    t2:"Code Preview", t2sub:"This is private methodology I've built — only a blurred snippet is shown to prove it's real; the full logic stays private.",
+    cap1:"↑ SKILL.md excerpt (blurred — full methodology not public)",
+    foot:"Built by Cindy Yisa × AI" },
+  ja: { back:"← ポートフォリオへ戻る", back2:"戻る", tag:"金融スキル · 非公開の方法論", title:"マルチマーケット連動テクニカル", priv:"🔒 全コード非公開",
+    lead:"暗号資産/為替/金/原油/米株/米債を一画面で対照。需給オーダーブロック構造+ボラティリティ基準のサイジングで、損切り・目標・リスクリワード付きの取引レベルの判断を出す。",
+    t1:"Skillの説明", t1sub:"このパイプラインが何をするか、どう規律を守るか。",
+    w1h:"構造はどこ、シナリオはどう進むか", w1p:"銘柄/チャートを入力すると、構造判断（需給ゾーン/天底転換/流動性の空白）+エントリー/損切り/目標/リスクリワード/サイジングの取引レベルの結論が出る。",
+    w2h:"9ステップの骨格+ポジション規律", w2p:"資金管理→トレンド特定→時間軸選択→シグナル検出（需給ゾーン/空白/ダマシ判定）→損切り→リスクリワード→減玉と保護→利確/損切り→次のシグナルを待つ。ポジションサイズはボラティリティに反比例。",
+    w3h:"確実性ではなく確率", w3p:"確率的思考、率直な誤り認識、厳格な損切りを重視；投資助言ではない——取引にはリスクが伴い、判断と結果は自己責任。",
+    t2:"コードプレビュー", t2sub:"これは私の非公開の方法論資産——実在を証明するためぼかした断片のみ公開、完全なロジックは非公開。",
+    cap1:"↑ SKILL.md抜粋（ぼかし加工済み、完全な方法論は非公開）",
+    foot:"Cindy奕飒 × AI ペアで構築" }
+};
+let lang = localStorage.getItem("cindy-lang") || "zh";
+const IMG = { zh:"../assets/work/skill-multimarket.png", en:"../assets/work/skill-multimarket-en.png", ja:"../assets/work/skill-multimarket-ja.png" };
+function apply(){
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = W[lang][el.dataset.i18n]; if (v) el.textContent = v; });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  const im = document.getElementById("skImg");
+  if (im){ im.onerror = () => { im.onerror = null; im.src = IMG.zh; }; im.src = IMG[lang] || IMG.zh; }
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang; localStorage.setItem("cindy-lang", lang); apply();
+}));
+apply();
+addEventListener("pointerdown", e => {
+  for (let i = 0; i < 12; i++){
+    const berry = i % 3 === 0;
+    const el = document.createElement("span");
+    el.className = "bp " + (berry ? "bp-berry" : "bp-spark");
+    if (berry) el.textContent = "🍓";
+    el.style.left = e.clientX + "px"; el.style.top = e.clientY + "px";
+    document.body.appendChild(el);
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 75;
+    el.animate([
+      { transform: "translate(-50%,-50%) scale(1)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${Math.cos(a)*d}px), calc(-50% + ${Math.sin(a)*d + 46}px)) scale(${berry ? 1.15 : 0.35})`, opacity: 0 }
+    ], { duration: 650 + Math.random() * 450, easing: "cubic-bezier(.16,.8,.3,1)" }).onfinish = () => el.remove();
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宏观金融机制拆解 · Cindy奕飒</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="work.css">
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="wnav">
+  <a class="wback" href="../index.html#finance" data-i18n="back">← 返回作品集</a>
+  <div class="lang-switch mono" role="group" aria-label="language">
+    <button data-lang="zh" class="active">中</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ja">日</button>
+  </div>
+</nav>
+
+<header class="whero">
+  <span class="wtag" data-i18n="tag">金融技能 · 私有方法论</span>
+  <h1 class="wtitle" data-i18n="title">宏观金融机制拆解</h1>
+  <div class="wmeta"><span>⏱ 2026-07-13</span><span data-i18n="priv">🔒 完整代码不公开</span></div>
+  <p class="wlead" data-i18n="lead">用基金经理级的宏观+衍生品视角，拆解政策与资产估值的底层机制，先做风险-收益对称性体检，再给出机制判断。</p>
+  <div class="wbtns">
+    <a class="btn btn-ghost mono" href="../index.html#finance" data-i18n="back2">返回</a>
+  </div>
+</header>
+
+<section class="wsec">
+  <h2 data-i18n="t1">Skill 说明</h2>
+  <p class="wsec-sub" data-i18n="t1sub">这套流水线在做什么、怎么守规矩。</p>
+  <div class="think-grid">
+    <div class="think-card"><b>核心问题</b><h3 data-i18n="w1h">风险-成本对称吗</h3><p data-i18n="w1p">不先问"能赚多少"，先问"如果错了亏多少、如果对了赚多少，两者对称吗"——非对称机会才值得做。</p></div>
+    <div class="think-card"><b>核心逻辑</b><h3 data-i18n="w2h">追钱 + 估值锚 + 净值幻觉</h3><p data-i18n="w2p">拆利益主体（谁埋单谁获益）→ 拆货币信用机制 → 用估值锚（利率倒数/DCF/盯市）定价 → 拆到"动作"层找历史类比 → 识别庞氏与账面净值幻觉。</p></div>
+    <div class="think-card"><b>纪律</b><h3 data-i18n="w3h">不装懂 + 免责先行</h3><p data-i18n="w3p">遇到把握不住的专业细分，明说不懂、给方向不给结论；每次产出结尾必须声明这是机制推演，不是投资建议。</p></div>
+  </div>
+</section>
+
+<section class="wsec">
+  <h2 data-i18n="t2">代码预览</h2>
+  <p class="wsec-sub" data-i18n="t2sub">这是我的私有方法论资产，只展示模糊的一小段代码证明真实存在，完整逻辑不公开。</p>
+  <figure class="shot">
+    <img id="skImg" src="../assets/work/skill-macro.png" alt="blurred skill code preview" loading="lazy">
+    <figcaption data-i18n="cap1">↑ SKILL.md 片段（已模糊处理，完整方法论不对外公开）</figcaption>
+  </figure>
+</section>
+
+<footer class="wfoot"><span data-i18n="foot">Cindy奕飒 × AI 结对构建</span></footer>
+
+<script>
+const W = {
+  zh: { back:"← 返回作品集", back2:"返回", tag:"金融技能 · 私有方法论", title:"宏观金融机制拆解", priv:"🔒 完整代码不公开",
+    lead:"用基金经理级的宏观+衍生品视角，拆解政策与资产估值的底层机制，先做风险-收益对称性体检，再给出机制判断。",
+    t1:"Skill 说明", t1sub:"这套流水线在做什么、怎么守规矩。",
+    w1h:"风险-成本对称吗", w1p:"不先问“能赚多少”，先问“如果错了亏多少、如果对了赚多少，两者对称吗”——非对称机会才值得做。",
+    w2h:"追钱 + 估值锚 + 净值幻觉", w2p:"拆利益主体（谁埋单谁获益）→ 拆货币信用机制 → 用估值锚（利率倒数/DCF/盯市）定价 → 拆到“动作”层找历史类比 → 识别庞氏与账面净值幻觉。",
+    w3h:"不装懂 + 免责先行", w3p:"遇到把握不住的专业细分，明说不懂、给方向不给结论；每次产出结尾必须声明这是机制推演，不是投资建议。",
+    t2:"代码预览", t2sub:"这是我的私有方法论资产，只展示模糊的一小段代码证明真实存在，完整逻辑不公开。",
+    cap1:"↑ SKILL.md 片段（已模糊处理，完整方法论不对外公开）",
+    foot:"Cindy奕飒 × AI 结对构建" },
+  en: { back:"← Back to portfolio", back2:"Back", tag:"FINANCE · PRIVATE METHODOLOGY", title:"Macro Mechanism Deconstruction", priv:"🔒 Full code not public",
+    lead:"A fund-manager-grade macro & derivatives lens that deconstructs the mechanics beneath policies and valuations, starting with a risk-reward symmetry check.",
+    t1:"Skill Description", t1sub:"What this pipeline does and how it stays disciplined.",
+    w1h:"Is risk-cost symmetric?", w1p:"Never ask “how much can I make” first — ask “how much do I lose if wrong, how much do I gain if right, are the two symmetric?” Only asymmetric opportunities are worth taking.",
+    w2h:"Follow the money + valuation anchor + NAV illusion", w2p:"Map the stakeholders (who pays, who benefits) → unpack the credit/money mechanism → price with a valuation anchor (inverse of rate / DCF / mark-to-market) → drill to the “action” layer with historical analogues → detect Ponzi structures and book-value illusions.",
+    w3h:"Admit what's unknown + disclaimer-first", w3p:"When a specialized detail is out of depth, say so plainly — give direction, not a conclusion; every output ends with a disclaimer that this is a mechanism exercise, not investment advice.",
+    t2:"Code Preview", t2sub:"This is private methodology I've built — only a blurred snippet is shown to prove it's real; the full logic stays private.",
+    cap1:"↑ SKILL.md excerpt (blurred — full methodology not public)",
+    foot:"Built by Cindy Yisa × AI" },
+  ja: { back:"← ポートフォリオへ戻る", back2:"戻る", tag:"金融スキル · 非公開の方法論", title:"マクロ金融メカニズム分解", priv:"🔒 全コード非公開",
+    lead:"ファンドマネージャー級のマクロ+デリバティブ視点で、政策と資産評価の根底メカニズムを分解。まずリスク・リワードの対称性を検査してからメカニズム判断を下す。",
+    t1:"Skillの説明", t1sub:"このパイプラインが何をするか、どう規律を守るか。",
+    w1h:"リスク・コストは対称か", w1p:"「いくら稼げるか」を先に問わない——「間違えたらいくら失い、正しければいくら得るか、両者は対称か」を先に問う。非対称な機会だけが取る価値がある。",
+    w2h:"資金追跡+評価アンカー+純資産幻想", w2p:"利害関係者を分解（誰が払い誰が得るか）→通貨・信用メカニズムを分解→評価アンカー（金利の逆数/DCF/時価評価）で価格付け→「行動」層まで分解し歴史的類例を探す→ポンジ構造と帳簿上の純資産幻想を識別。",
+    w3h:"分からないことは認める+免責事項優先", w3p:"専門的な細部で把握できない場合は正直に言う——方向は示すが結論は出さない；すべての出力の末尾に「これはメカニズムの推論であり投資助言ではない」と明記する。",
+    t2:"コードプレビュー", t2sub:"これは私の非公開の方法論資産——実在を証明するためぼかした断片のみ公開、完全なロジックは非公開。",
+    cap1:"↑ SKILL.md抜粋（ぼかし加工済み、完全な方法論は非公開）",
+    foot:"Cindy奕飒 × AI ペアで構築" }
+};
+let lang = localStorage.getItem("cindy-lang") || "zh";
+const IMG = { zh:"../assets/work/skill-macro.png", en:"../assets/work/skill-macro-en.png", ja:"../assets/work/skill-macro-ja.png" };
+function apply(){
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = W[lang][el.dataset.i18n]; if (v) el.textContent = v; });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  const im = document.getElementById("skImg");
+  if (im){ im.onerror = () => { im.onerror = null; im.src = IMG.zh; }; im.src = IMG[lang] || IMG.zh; }
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang; localStorage.setItem("cindy-lang", lang); apply();
+}));
+apply();
+addEventListener("pointerdown", e => {
+  for (let i = 0; i < 12; i++){
+    const berry = i % 3 === 0;
+    const el = document.createElement("span");
+    el.className = "bp " + (berry ? "bp-berry" : "bp-spark");
+    if (berry) el.textContent = "🍓";
+    el.style.left = e.clientX + "px"; el.style.top = e.clientY + "px";
+    document.body.appendChild(el);
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 75;
+    el.animate([
+      { transform: "translate(-50%,-50%) scale(1)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${Math.cos(a)*d}px), calc(-50% + ${Math.sin(a)*d + 46}px)) scale(${berry ? 1.15 : 0.35})`, opacity: 0 }
+    ], { duration: 650 + Math.random() * 450, easing: "cubic-bezier(.16,.8,.3,1)" }).onfinish = () => el.remove();
+  }
+});
+</script>
+</body>
+</html>

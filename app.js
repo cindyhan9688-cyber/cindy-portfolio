@@ -99,23 +99,23 @@ const I18N = {
 
 /* ---------- 金融技能（重点） ---------- */
 const FINANCE = [
-  { tag:"PIPELINE", ts:"2026-07-13",
+  { tag:"PIPELINE", ts:"2026-07-13", link:"work/skill-pipeline.html",
     zh:["金融事件分析流水线","对任何突发金融事件做 7 步预判：追钱的流向、定位周期、看玩家利益、带时间线给出剧本。"],
     en:["Financial Event Pipeline","A 7-step playbook for any breaking financial event: follow the money, locate the cycle, map player incentives, forecast with a timeline."],
     ja:["金融イベント分析パイプライン","突発的な金融イベントを7ステップで予測：資金の流れを追い、サイクルを特定し、プレイヤーの利害を読み、タイムライン付きでシナリオを出す。"] },
-  { tag:"MACRO / DERIVATIVES", ts:"2026-07-13",
+  { tag:"MACRO / DERIVATIVES", ts:"2026-07-13", link:"work/skill-macro.html",
     zh:["宏观金融机制拆解","用基金经理级的宏观+衍生品视角，拆解政策与资产估值的底层机制，先做风险-收益对称性体检。"],
     en:["Macro Mechanism Deconstruction","Fund-manager-grade macro & derivatives lens: deconstruct the mechanics beneath policies and valuations, starting with a risk-reward symmetry check."],
     ja:["マクロ金融メカニズム分解","ファンドマネージャー級のマクロ+デリバティブ視点で、政策と資産評価の根底メカニズムを分解。まずリスク・リワードの対称性を検査。"] },
-  { tag:"MULTI-MARKET", ts:"2026-07-12",
+  { tag:"MULTI-MARKET", ts:"2026-07-12", link:"work/skill-multimarket.html",
     zh:["多市场联动技术分析","加密/外汇/黄金/原油/美股/美债一屏对照，供需订单块结构 + 按波动率定仓位。"],
     en:["Multi-Market Structure Analysis","Crypto, FX, gold, oil, equities and bonds on one screen: supply-demand order blocks + volatility-based sizing."],
     ja:["マルチマーケット連動テクニカル","暗号資産/為替/金/原油/米株/米債を一画面で対照。需給オーダーブロック構造+ボラティリティ基準のサイジング。"] },
-  { tag:"CRYPTO / ARBITRAGE", ts:"2026-07-11",
+  { tag:"CRYPTO / ARBITRAGE", ts:"2026-07-11", link:"work/skill-crypto-arb.html",
     zh:["Crypto 套利认知引擎","用毒辣的套利视角审视任何币/理财机会给出盈亏比，配免 key 的资金费率/基差/持仓数据探针。"],
     en:["Crypto Arbitrage Lens","A sharp arbitrage lens that scores any coin or yield offer by risk-reward, backed by keyless probes for funding rates, basis and open interest."],
     ja:["Cryptoアービトラージ認知エンジン","鋭い裁定視点であらゆるコイン・利回り案件をリスクリワードで採点。資金調達率/ベーシス/建玉のキーレス・データプローブ付き。"] },
-  { tag:"DATA", ts:"2026-07-10",
+  { tag:"DATA", ts:"2026-07-10", link:"work/crypto-price.html",
     zh:["Crypto 价格采集器","双数据源实时查 BTC/ETH/SOL 价格，双源互验防单点错价。"],
     en:["Crypto Price Collector","Dual-source real-time BTC/ETH/SOL prices, cross-validated to kill single-source errors."],
     ja:["Crypto価格コレクター","デュアルソースでBTC/ETH/SOLをリアルタイム取得、相互検証で単一ソースの誤値を排除。"] },
@@ -139,7 +139,7 @@ const PROJECTS = [
     zh:["微信客服⇄飞书中转","用户在微信聊、我在飞书处理：官方客服通道 + 多维表格建档 + AI 草稿。"],
     en:["WeChat⇄Feishu Relay","Customers chat on WeChat, I work in Feishu: official service channel + auto-archiving + AI-drafted replies."],
     ja:["WeChat⇄Feishu中継","ユーザーはWeChat、私はFeishuで対応。公式チャネル+自動記録+AI下書き。"] },
-  { cat:"tool", ts:"2026-07-10", wip:false,
+  { cat:"tool", ts:"2026-07-10", wip:false, link:"work/amap-travel.html",
     zh:["高德旅游数据采集器","一条命令查任意城市天气/美食/酒店/景点，一键导出 HTML/长图/PDF/Word/MD 五种格式。"],
     en:["Amap Travel Collector","One command pulls weather, food, hotels and sights for any city — exports to 5 formats in one click."],
     ja:["高徳旅行データコレクター","コマンド一つで任意都市の天気/グルメ/ホテル/観光地を取得、5形式へワンクリック出力。"] },
@@ -147,7 +147,7 @@ const PROJECTS = [
     zh:["HTML→长图/PDF 工具","任何 HTML 一键导出高清长图 PNG + 单页长版 PDF，报告分享神器。"],
     en:["HTML→Image/PDF Tool","Turn any HTML into a hi-res long PNG + single-page PDF in one click — perfect for sharing reports."],
     ja:["HTML→画像/PDF変換ツール","任意のHTMLを高解像度ロング画像PNG+1ページPDFへワンクリック変換。"] },
-  { cat:"tool", ts:"2026-07-10", wip:false,
+  { cat:"tool", ts:"2026-07-10", wip:false, link:"work/api-playbook.html",
     zh:["API 接入通用流程","接入任意平台 API 的七步流水线 + 各大平台速查表 + 状态码排错手册。"],
     en:["API Integration Playbook","A 7-step pipeline for integrating any platform API, with a platform cheat sheet and error-code troubleshooting manual."],
     ja:["API接続プレイブック","任意プラットフォームAPIを繋ぐ7ステップ+主要プラットフォーム早見表+エラーコード対処マニュアル。"] },
@@ -167,7 +167,7 @@ const PROJECTS = [
     zh:["简历+面试准备技能","把真实经历和工作经验，准确地传达给面试官：AI 打分、JD 关键词、STAR 故事。"],
     en:["Resume & Interview Skill","Convey your real experience and work history to interviewers, accurately: AI scoring, JD keywords, STAR stories."],
     ja:["履歴書+面接準備スキル","実際の経歴と職務経験を面接官へ正確に伝える：AI採点、JDキーワード、STARストーリー。"] },
-  { cat:"life", ts:"2026-07-11", wip:false,
+  { cat:"life", ts:"2026-07-11", wip:false, link:"work/selfie.html",
     zh:["人像自拍全流程清单","从妆容、选光到机位姿势的 7 步拍照方案，要素库拆解自真实爆款组图。"],
     en:["Portrait Selfie Checklist","A 7-step shooting plan from makeup and light to angles and poses, distilled from real viral photo sets."],
     ja:["セルフィー全工程チェックリスト","メイク・光選び・アングル・ポーズまでの7ステップ撮影プラン。実際のバズった作例から要素を抽出。"] },
@@ -642,14 +642,17 @@ function renderHeatmap(){
 function renderFinance(){
   $("#finGrid").innerHTML = FINANCE.map((f,i) => {
     const [title, desc] = f[lang] || f.zh;
-    return `<div class="fin-row">
+    const tag = f.link ? "a" : "div";
+    const href = f.link ? ` href="${f.link}"` : "";
+    const more = f.link ? `<span class="fin-more mono">${T("pj.more")}</span>` : "";
+    return `<${tag}${href} class="fin-row${f.link ? " fin-linked" : ""}">
       <span class="fin-idx mono">${String(i+1).padStart(2,"0")}</span>
       <div>
         <h3 class="fin-name">${title}</h3><span class="fin-tag mono">${f.tag}</span>
-        <p class="fin-desc">${desc}</p>
+        <p class="fin-desc">${desc}</p>${more}
       </div>
       <span class="fin-ts mono">${f.ts}</span>
-    </div>`;
+    </${tag}>`;
   }).join("");
 }
 
@@ -666,7 +669,7 @@ function renderFilters(){
 function renderProjects(){
   const list = PROJECTS
     .filter(p => activeCat === "all" || p.cat === activeCat)
-    .sort((a,b) => b.ts.localeCompare(a.ts));
+    .sort((a,b) => (b.link?1:0) - (a.link?1:0) || b.ts.localeCompare(a.ts));
   $("#pjGrid").innerHTML = list.map((p,i) => {
     const [title] = p[lang] || p.zh;
     const desc = p.locked ? `<span class="pj-lock mono">${T("pj.private")}</span>` : (p[lang] || p.zh)[1];

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto 套利认知引擎 · Cindy奕飒</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="work.css">
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="wnav">
+  <a class="wback" href="../index.html#finance" data-i18n="back">← 返回作品集</a>
+  <div class="lang-switch mono" role="group" aria-label="language">
+    <button data-lang="zh" class="active">中</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ja">日</button>
+  </div>
+</nav>
+
+<header class="whero">
+  <span class="wtag" data-i18n="tag">金融技能 · 私有方法论</span>
+  <h1 class="wtitle">Crypto 套利认知引擎</h1>
+  <div class="wmeta"><span>⏱ 2026-07-11</span><span data-i18n="priv">🔒 完整代码不公开</span></div>
+  <p class="wlead" data-i18n="lead">用毒辣的套利视角审视任何币/理财机会给出盈亏比，配免 key 的资金费率/基差/持仓数据探针当锚。</p>
+  <div class="wbtns">
+    <a class="btn btn-ghost mono" href="../index.html#finance" data-i18n="back2">返回</a>
+  </div>
+</header>
+
+<section class="wsec">
+  <h2 data-i18n="t1">Skill 说明</h2>
+  <p class="wsec-sub" data-i18n="t1sub">这套流水线在做什么、怎么守规矩。</p>
+  <div class="think-grid">
+    <div class="think-card"><b>核心问题</b><h3 data-i18n="w1h">对手盘是谁</h3><p data-i18n="w1p">任何一笔"稳赚"机会，第一问永远是：这笔的对手盘是谁？谁来接盘？谁在补贴这个收益？</p></div>
+    <div class="think-card"><b>数据探针</b><h3 data-i18n="w2h">真实下注三信号</h3><p data-i18n="w2p">不看"币多少钱"，看资金费率、现货/合约价差、持仓量——一个免 key 直连交易所公开行情的脚本把三个信号拉出来，给判断当锚，不靠空想。</p></div>
+    <div class="think-card"><b>纪律</b><h3 data-i18n="w3h">给判断，不给梭哈</h3><p data-i18n="w3p">看透机会背后的结构、算清对手盘、把回撤做低；免责先行——分析推演，不是投资建议，杠杆/裸多可归零，决策与后果自负。</p></div>
+  </div>
+</section>
+
+<section class="wsec">
+  <h2 data-i18n="t2">代码预览</h2>
+  <p class="wsec-sub" data-i18n="t2sub">数据探针脚本的一小段真实代码（已模糊），完整方法论与判断逻辑不公开。</p>
+  <figure class="shot">
+    <img id="skImg" src="../assets/work/skill-crypto-arb.png" alt="blurred skill code preview" loading="lazy">
+    <figcaption data-i18n="cap1">↑ 数据探针脚本片段（已模糊处理，完整方法论不对外公开）</figcaption>
+  </figure>
+</section>
+
+<footer class="wfoot"><span data-i18n="foot">Cindy奕飒 × AI 结对构建</span></footer>
+
+<script>
+const W = {
+  zh: { back:"← 返回作品集", back2:"返回", tag:"金融技能 · 私有方法论", priv:"🔒 完整代码不公开",
+    lead:"用毒辣的套利视角审视任何币/理财机会给出盈亏比，配免 key 的资金费率/基差/持仓数据探针当锚。",
+    t1:"Skill 说明", t1sub:"这套流水线在做什么、怎么守规矩。",
+    w1h:"对手盘是谁", w1p:"任何一笔“稳赚”机会，第一问永远是：这笔的对手盘是谁？谁来接盘？谁在补贴这个收益？",
+    w2h:"真实下注三信号", w2p:"不看“币多少钱”，看资金费率、现货/合约价差、持仓量——一个免 key 直连交易所公开行情的脚本把三个信号拉出来，给判断当锚，不靠空想。",
+    w3h:"给判断，不给梭哈", w3p:"看透机会背后的结构、算清对手盘、把回撤做低；免责先行——分析推演，不是投资建议，杠杆/裸多可归零，决策与后果自负。",
+    t2:"代码预览", t2sub:"数据探针脚本的一小段真实代码（已模糊），完整方法论与判断逻辑不公开。",
+    cap1:"↑ 数据探针脚本片段（已模糊处理，完整方法论不对外公开）",
+    foot:"Cindy奕飒 × AI 结对构建" },
+  en: { back:"← Back to portfolio", back2:"Back", tag:"FINANCE · PRIVATE METHODOLOGY", priv:"🔒 Full code not public",
+    lead:"A sharp arbitrage lens that scores any coin or yield offer by risk-reward, anchored by keyless probes for funding rates, basis and open interest.",
+    t1:"Skill Description", t1sub:"What this pipeline does and how it stays disciplined.",
+    w1h:"Who's the counterparty", w1p:"For any “sure-win” opportunity, the first question is always: who's on the other side of this trade? Who's absorbing it? Who's subsidizing this yield?",
+    w2h:"Three real betting signals", w2p:"Doesn't look at “what's the coin worth” — looks at funding rate, spot/futures basis, open interest. A keyless script pulls these three signals straight from exchange public data as an anchor, not guesswork.",
+    w3h:"A verdict, not a green light to go all-in", w3p:"See through the structure behind an opportunity, know the counterparty, keep drawdowns low; disclaimer-first — this is analytical reasoning, not investment advice; leverage/naked longs can go to zero, decisions and consequences are the user's own.",
+    t2:"Code Preview", t2sub:"A small real snippet from the data-probe script (blurred) — the full methodology and judgment logic stay private.",
+    cap1:"↑ Data-probe script excerpt (blurred — full methodology not public)",
+    foot:"Built by Cindy Yisa × AI" },
+  ja: { back:"← ポートフォリオへ戻る", back2:"戻る", tag:"金融スキル · 非公開の方法論", priv:"🔒 全コード非公開",
+    lead:"鋭い裁定視点であらゆるコイン・利回り案件をリスクリワードで採点、資金調達率/ベーシス/建玉のキーレス・データプローブを判断の錨にする。",
+    t1:"Skillの説明", t1sub:"このパイプラインが何をするか、どう規律を守るか。",
+    w1h:"対手方は誰か", w1p:"あらゆる「確実に儲かる」機会について、最初の問いは常に：この取引の相手方は誰か？誰が引き受けるのか？誰がこの利回りを補助しているのか？",
+    w2h:"実際の賭けを示す3つのシグナル", w2p:"「コインの値段」ではなく、資金調達率、現物/先物のベーシス、建玉を見る——キー不要のスクリプトが取引所の公開データからこの3つのシグナルを直接取得し、当て推量ではなく判断の錨にする。",
+    w3h:"判断は出すが全力ベットは勧めない", w3p:"機会の裏の構造を見抜き、相手方を把握し、ドローダウンを抑える；免責事項優先——これは分析的推論であり投資助言ではない、レバレッジ/裸のロングはゼロになりうる、判断と結果は自己責任。",
+    t2:"コードプレビュー", t2sub:"データプローブスクリプトの実際の断片（ぼかし加工済み）——完全な方法論と判断ロジックは非公開。",
+    cap1:"↑ データプローブスクリプト抜粋（ぼかし加工済み、完全な方法論は非公開）",
+    foot:"Cindy奕飒 × AI ペアで構築" }
+};
+let lang = localStorage.getItem("cindy-lang") || "zh";
+const IMG = { zh:"../assets/work/skill-crypto-arb.png", en:"../assets/work/skill-crypto-arb-en.png", ja:"../assets/work/skill-crypto-arb-ja.png" };
+function apply(){
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = W[lang][el.dataset.i18n]; if (v) el.textContent = v; });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  const im = document.getElementById("skImg");
+  if (im){ im.onerror = () => { im.onerror = null; im.src = IMG.zh; }; im.src = IMG[lang] || IMG.zh; }
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang; localStorage.setItem("cindy-lang", lang); apply();
+}));
+apply();
+addEventListener("pointerdown", e => {
+  for (let i = 0; i < 12; i++){
+    const berry = i % 3 === 0;
+    const el = document.createElement("span");
+    el.className = "bp " + (berry ? "bp-berry" : "bp-spark");
+    if (berry) el.textContent = "🍓";
+    el.style.left = e.clientX + "px"; el.style.top = e.clientY + "px";
+    document.body.appendChild(el);
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 75;
+    el.animate([
+      { transform: "translate(-50%,-50%) scale(1)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${Math.cos(a)*d}px), calc(-50% + ${Math.sin(a)*d + 46}px)) scale(${berry ? 1.15 : 0.35})`, opacity: 0 }
+    ], { duration: 650 + Math.random() * 450, easing: "cubic-bezier(.16,.8,.3,1)" }).onfinish = () => el.remove();
+  }
+});
+</script>
+</body>
+</html>
