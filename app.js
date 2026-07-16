@@ -9,7 +9,7 @@ const TOTAL_HOURS = STATS.baseHours + STATS.liveHours;
 /* ---------- i18n ---------- */
 const I18N = {
   zh: {
-    "nav.time":"时间","nav.heatmap":"和AI成长热力图","nav.finance":"金融技能","nav.projects":"作品","nav.contact":"联系",
+    "nav.time":"时间","nav.heatmap":"和AI成长热力图","nav.ain":"AI Networking项目","nav.finance":"金融技能","nav.projects":"作品","nav.contact":"联系",
     "hero.hello":"你好~ 我是Cindy奕飒，很高兴认识你",
     "hero.slogan":"和 AI 一起成长",
     "hero.sub":"这里的每一件作品，都是我和 AI 结对完成的。",
@@ -38,7 +38,7 @@ const I18N = {
     dateFmt: d => `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 星期${"日一二三四五六"[d.getDay()]}`
   },
   en: {
-    "nav.time":"Time","nav.heatmap":"Growth Heatmap","nav.finance":"Finance","nav.projects":"Projects","nav.contact":"Contact",
+    "nav.time":"Time","nav.heatmap":"Growth Heatmap","nav.ain":"AI Networking","nav.finance":"Finance","nav.projects":"Projects","nav.contact":"Contact",
     "hero.hello":"Hi~ I'm Cindy Yisa. Nice to meet you!",
     "hero.slogan":"Growing with AI",
     "hero.sub":"Everything here was pair-built by me and AI.",
@@ -67,7 +67,7 @@ const I18N = {
     dateFmt: d => d.toLocaleDateString("en-US",{weekday:"long",year:"numeric",month:"long",day:"numeric"})
   },
   ja: {
-    "nav.time":"時間","nav.heatmap":"AI成長ヒートマップ","nav.finance":"金融スキル","nav.projects":"作品","nav.contact":"連絡",
+    "nav.time":"時間","nav.heatmap":"AI成長ヒートマップ","nav.ain":"AI Networking","nav.finance":"金融スキル","nav.projects":"作品","nav.contact":"連絡",
     "hero.hello":"こんにちは〜 Cindy奕飒です。はじめまして！",
     "hero.slogan":"AIと一緒に成長する",
     "hero.sub":"ここにある作品はすべて、私とAIのペア作業で生まれました。",

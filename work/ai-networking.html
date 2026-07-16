@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Networking 项目 · Cindy奕飒</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="work.css">
+<style>
+.ain-code{
+  background:#0a1633;border-radius:12px;padding:20px 24px;font-family:Consolas,'Courier New',monospace;
+  font-size:12.5px;line-height:1.75;color:#cddcff;overflow-x:auto;border:1px solid #22346e;white-space:pre;
+}
+.ain-code .c{color:#7d9be8}
+.ain-note{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 26px;
+  font-size:13.5px;line-height:1.9;color:#38466b;
+}
+.ain-note h4{color:var(--blue);font-size:14px;margin:16px 0 6px}
+.ain-note h4:first-child{margin-top:0}
+.ain-note pre{background:var(--tint1);border-radius:8px;padding:12px 14px;font-family:Consolas,monospace;font-size:12px;color:#1249e2;overflow-x:auto;margin:8px 0}
+.ain-partial{
+  display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-family:Consolas,monospace;font-size:11.5px;
+  color:#8194bd;letter-spacing:.04em;
+}
+.ain-board{margin-bottom:64px}
+.ain-board:last-child{margin-bottom:0}
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav class="wnav">
+  <a class="wback" href="../index.html" data-i18n="back">← 返回作品集</a>
+  <div class="lang-switch mono" role="group" aria-label="language">
+    <button data-lang="zh" class="active">中</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ja">日</button>
+  </div>
+</nav>
+
+<header class="whero">
+  <span class="wtag" data-i18n="tag">网络工程 · AI Networking</span>
+  <h1 class="wtitle" data-i18n="title">AI Networking 项目</h1>
+  <p class="wlead" data-i18n="lead">网络工程师转型 AI 智算网络方向的两项真实产出：一个可运行的规划工具代码，一份数据中心 RDMA 技术笔记。</p>
+</header>
+
+<section class="wsec ain-board">
+  <h2 data-i18n="b1title">01 · AI Fabric 智算网络规划器</h2>
+  <p class="wsec-sub" data-i18n="b1sub">输入 GPU 集群规模，自动输出一整套 RoCE 无损网络方案的 Python 工具。设计之初就坚持厂商中性——不含任何保密参数，内置 3 个公开案例做回归自校验。</p>
+  <div class="think-grid">
+    <div class="think-card"><b>INPUT→OUTPUT</b><h3 data-i18n="b1w1h">规模进，方案出</h3><p data-i18n="b1w1p">输入服务器台数和交换机型号，自动算出 POD/Leaf/Spine 数量、光模块 BOM、配置片段、验收清单——一条命令替代人肉查表。</p></div>
+    <div class="think-card"><b>ALGORITHM</b><h3 data-i18n="b1w2h">Rail-Optimize + 1:1 收敛</h3><p data-i18n="b1w2p">核心是二级 Fat-Tree 换算：同号卡接同号 Leaf，Spine 数量取 2 的幂次，保证任意两台 GPU 之间的带宽不打折。</p></div>
+    <div class="think-card"><b>VERIFIED</b><h3 data-i18n="b1w3h">3 个公开案例回归通过</h3><p data-i18n="b1w3p">千卡集群案例连光模块数量（2048个）和省电量（7.17kW，参考值~7kW）都精确复现，证明换算逻辑与行业公开方案一致。</p></div>
+  </div>
+  <div class="ain-code" id="ainCode1"></div>
+  <div class="ain-partial" id="ainPartial1"></div>
+</section>
+
+<section class="wsec ain-board">
+  <h2 data-i18n="b2title">02 · RDMA 数据中心网络知识库</h2>
+  <p class="wsec-sub" data-i18n="b2sub">数据中心 RDMA 无损网络的系统学习笔记：从 TCP/IP 的延迟瓶颈讲起，到 RoCEv2、QP、PFC、ECN 的完整技术栈。</p>
+  <div class="ain-note" id="ainNote"></div>
+  <div class="ain-partial" id="ainPartial2"></div>
+</section>
+
+<footer class="wfoot"><span data-i18n="foot">Cindy奕飒 × AI 结对构建</span></footer>
+
+<script>
+const CODE1 = `# 设备库：厂商中性，只描述通用能力（端口数/速率/功耗/芯片代际）
+SWITCHES = {
+    "sw-64x400g":  {"ports": 64,  "speed": 400, "power_w": 2400, "chip": "TH4-class"},
+    "sw-128x400g": {"ports": 128, "speed": 400, "power_w": 3160, "chip": "TH5-class"},
+    "sw-64x800g":  {"ports": 64,  "speed": 800, "power_w": 2982, "chip": "TH5-class"},
+}
+
+def plan(servers, switch_key, rails=8, nic_speed=400):
+    """
+    核心规模换算（Rail-Optimize + 1:1 收敛的二级 Fat-Tree）：
+      - 每台 GPU 服务器有 rails 张网卡（默认8，对应8张GPU卡）
+      - 同号卡接同号 Leaf → 每个 POD 需要 rails 台 Leaf
+      - 1:1 收敛 → Leaf 上行口数 = 下行口数 = 端口总数/2
+    """
+    sw = SWITCHES[switch_key]
+    ports = sw["ports"]
+
+    down = ports // 2                 # Leaf 下行(接服务器)
+    up = ports // 2                   # Leaf 上行(接Spine) —— 1:1 收敛
+    pod_size = down
+    pod_count = math.ceil(servers / pod_size)
+    leaf_total = rails * pod_count
+
+    # Spine 数：需满足所有 Leaf 的上行链路都插得下
+    spine_min = math.ceil(leaf_total * up / ports)
+    spine_count = next_pow2(max(spine_min, 1))
+    ...
+
+def selftest():
+    """用公开发布的参考案例做回归校验，证明换算算法正确。"""
+    cases = [
+        ("64口满配 256台",   256,  "sw-64x400g",  8,  64,  32, None),
+        ("128口满配 1024台", 1024, "sw-128x400g", 16, 128, 64, None),
+        ("千卡集群 128台",   128,  "sw-128x400g", 2,  16,  8,  2048),
+    ]
+    # ✅ 全部通过 —— 算法与公开案例一致`;
+document.getElementById("ainCode1").textContent = CODE1;
+
+const NOTE_ZH = `<h4>一、RDMA 基础：为什么从 TCP/IP 出发</h4>
+<p><b>TCP/IP 的延迟瓶颈</b>——每次数据交互都要 CPU 参与：网卡收包→中断 CPU→内核解析协议栈→上下文切换→应用读取。往返延迟 &gt;100μs，CPU 开销 50%+。</p>
+<p><b>RDMA 的解法</b>——网卡直接访问内存，不经过 CPU：无中断、无上下文切换、无 Buffer 拷贝。往返延迟 &lt;10μs，CPU 开销 &lt;5%。IOPS 从 1M 提升到 100M，提升两个数量级。</p>
+<h4>二、无损网络的关键：PFC</h4>
+<p><b>没有 PFC 的后果</b>——交换机输出端口打满时，新包只能进 Buffer；Buffer 满了就丢包（Tail Drop）。TCP 尚可容忍（触发重传），但 RDMA 一旦丢包，QP 直接陷入超时、连接死亡、应用挂起。</p>
+<pre>Host 发现即将溢出：
+1. 发送 PAUSE 帧到交换机（指定优先级）
+2. 交换机停止发送该优先级的包
+3. Host 缓过来了 → 发送 RESUME 帧
+结果：0 丢包（零损网络）</pre>
+<p><b>PFC 死锁风险</b>：A 等 B 的高优先级流量 → B 等 C → C 等 A，三者互相暂停导致整个系统 hang。解法是设置 PFC 超时（如2秒），超时自动清除 Pause——带来轻微丢包风险，但总比死锁好。</p>`;
+
+const NOTE_EN = `<h4>1. RDMA Basics: Starting from the TCP/IP Bottleneck</h4>
+<p><b>TCP/IP's latency problem</b> — every exchange needs the CPU: NIC receives → interrupts CPU → kernel parses the protocol stack → context switch → app reads. Round-trip latency &gt;100μs, CPU overhead 50%+.</p>
+<p><b>RDMA's answer</b> — the NIC accesses memory directly, bypassing the CPU entirely: no interrupts, no context switches, no buffer copies. Round-trip latency &lt;10μs, CPU overhead &lt;5%. IOPS jumps from 1M to 100M — two orders of magnitude.</p>
+<h4>2. The Key to Lossless Networking: PFC</h4>
+<p><b>Without PFC</b> — when a switch's output port saturates, new packets queue into the buffer; once full, packets get dropped (tail drop). TCP tolerates this (triggers retransmission), but RDMA can't: a dropped packet sends the QP into timeout, the connection dies, and the application hangs.</p>
+<pre>Host detects imminent overflow:
+1. Sends a PAUSE frame to the switch (per priority)
+2. Switch stops sending that priority's traffic
+3. Host recovers → sends a RESUME frame
+Result: 0% packet loss (lossless network)</pre>
+<p><b>PFC deadlock risk</b>: A waits on B's high-priority traffic → B waits on C → C waits on A — all three pause each other and the whole system hangs. The fix: set a PFC timeout (e.g. 2 seconds) that auto-clears the pause — a small risk of packet loss, but far better than a deadlock.</p>`;
+
+const NOTE_JA = `<h4>一、RDMAの基礎：TCP/IPのボトルネックから</h4>
+<p><b>TCP/IPの遅延問題</b>——毎回のやり取りにCPUが介入：NICが受信→CPU割込み→カーネルがプロトコルスタックを解析→コンテキストスイッチ→アプリが読み取り。往復遅延は100μs超、CPUオーバーヘッドは50%以上。</p>
+<p><b>RDMAの解決策</b>——NICがCPUを経由せず直接メモリにアクセス：割込みなし、コンテキストスイッチなし、バッファコピーなし。往復遅延10μs未満、CPUオーバーヘッド5%未満。IOPSは100万から1億へ、2桁向上。</p>
+<h4>二、ロスレスネットワークの鍵：PFC</h4>
+<p><b>PFCがない場合</b>——スイッチの出力ポートが飽和すると新パケットはバッファへ、バッファが満杯になるとパケットが破棄される（Tail Drop）。TCPは許容できる（再送がトリガーされる）が、RDMAはパケットが1つ落ちるとQPがタイムアウトし、接続が切れ、アプリケーションがハングする。</p>
+<pre>ホストが溢れそうと検知：
+1. スイッチへPAUSEフレームを送信（優先度指定）
+2. スイッチがその優先度のトラフィックを停止
+3. ホストが回復 → RESUMEフレームを送信
+結果：パケットロス0%（ロスレスネットワーク）</pre>
+<p><b>PFCデッドロックのリスク</b>：AがBの高優先度トラフィックを待ち→BがCを待ち→CがAを待つ——3者が互いに一時停止し、システム全体がハングする。対策：PFCタイムアウト（例：2秒）を設定し自動的にPauseを解除——わずかなパケットロスのリスクはあるが、デッドロックよりはるかにまし。</p>`;
+
+const W = {
+  zh: { back:"← 返回作品集", tag:"网络工程 · AI Networking", title:"AI Networking 项目",
+    lead:"网络工程师转型 AI 智算网络方向的两项真实产出：一个可运行的规划工具代码，一份数据中心 RDMA 技术笔记。",
+    b1title:"01 · AI Fabric 智算网络规划器",
+    b1sub:"输入 GPU 集群规模，自动输出一整套 RoCE 无损网络方案的 Python 工具。设计之初就坚持厂商中性——不含任何保密参数，内置 3 个公开案例做回归自校验。",
+    b1w1h:"规模进，方案出", b1w1p:"输入服务器台数和交换机型号，自动算出 POD/Leaf/Spine 数量、光模块 BOM、配置片段、验收清单——一条命令替代人肉查表。",
+    b1w2h:"Rail-Optimize + 1:1 收敛", b1w2p:"核心是二级 Fat-Tree 换算：同号卡接同号 Leaf，Spine 数量取 2 的幂次，保证任意两台 GPU 之间的带宽不打折。",
+    b1w3h:"3 个公开案例回归通过", b1w3p:"千卡集群案例连光模块数量（2048个）和省电量（7.17kW，参考值~7kW）都精确复现，证明换算逻辑与行业公开方案一致。",
+    partial1:"↑ 以上为部分代码展示，非完整项目源码",
+    b2title:"02 · RDMA 数据中心网络知识库",
+    b2sub:"数据中心 RDMA 无损网络的系统学习笔记：从 TCP/IP 的延迟瓶颈讲起，到 RoCEv2、QP、PFC、ECN 的完整技术栈。",
+    partial2:"↑ 以上为笔记节选，非完整内容",
+    foot:"Cindy奕飒 × AI 结对构建" },
+  en: { back:"← Back to portfolio", tag:"NETWORKING · AI NETWORKING", title:"AI Networking Project",
+    lead:"Two real deliverables from a network engineer moving into AI fabric networking: a runnable planning-tool codebase, and a data-center RDMA technical note.",
+    b1title:"01 · AI Fabric Planner",
+    b1sub:"A Python tool that turns a GPU cluster's scale into a full RoCE lossless-network plan. Designed vendor-neutral from day one — no confidential parameters, with 3 public reference cases built in for regression self-testing.",
+    b1w1h:"Scale in, plan out", b1w1p:"Feed it a server count and switch model — it computes POD/Leaf/Spine counts, an optics BOM, config snippets and an acceptance checklist, replacing manual spreadsheet math with one command.",
+    b1w2h:"Rail-Optimize + 1:1 oversubscription", b1w2p:"The core is a two-tier Fat-Tree calculation: same-numbered NICs connect to same-numbered Leaf switches, Spine count is always a power of 2, guaranteeing full bandwidth between any two GPUs.",
+    b1w3h:"Regression-verified against 3 public cases", b1w3p:"The thousand-GPU case reproduces both the optics count (2,048) and power savings (7.17kW, vs. a ~7kW reference) exactly — proof the math matches published industry designs.",
+    partial1:"↑ Partial code preview above — not the full project source",
+    b2title:"02 · RDMA Data-Center Networking Notes",
+    b2sub:"A systematic study of data-center RDMA lossless networking: starting from the TCP/IP latency bottleneck, through RoCEv2, Queue Pairs, PFC and ECN.",
+    partial2:"↑ A partial excerpt above — not the complete notes",
+    foot:"Built by Cindy Yisa × AI" },
+  ja: { back:"← ポートフォリオへ戻る", tag:"ネットワーク工学 · AI Networking", title:"AI Networkingプロジェクト",
+    lead:"ネットワークエンジニアからAI智算ネットワーク方向への転向で生まれた2つの実成果：実行可能な計画ツールのコードと、データセンターRDMA技術ノート。",
+    b1title:"01 · AI Fabric プランナー",
+    b1sub:"GPUクラスタの規模を入力すると、RoCEロスレスネットワークの完全なプランを自動出力するPythonツール。設計当初からベンダーニュートラル——非公開パラメータは一切含まず、3つの公開参考ケースで回帰自己検証を内蔵。",
+    b1w1h:"規模を入れてプランを出す", b1w1p:"サーバー台数とスイッチ型番を入力すると、POD/Leaf/Spine数、光モジュールBOM、設定スニペット、受入チェックリストを自動算出——手計算をコマンド一つで置き換える。",
+    b1w2h:"Rail-Optimize + 1:1収束", b1w2p:"核心は二段Fat-Tree換算：同番号のNICは同番号のLeafに接続、Spine数は常に2の冪乗、どの2台のGPU間でも帯域が落ちないことを保証。",
+    b1w3h:"3つの公開ケースで回帰検証済み", b1w3p:"千枚GPUのケースでは光モジュール数（2,048個）と省電力量（7.17kW、参考値約7kW）を正確に再現——業界公開設計とロジックが一致することの証明。",
+    partial1:"↑ 上記は部分的なコードプレビュー、完全なプロジェクトソースではありません",
+    b2title:"02 · RDMAデータセンターネットワーク知識ベース",
+    b2sub:"データセンターRDMAロスレスネットワークの体系的な学習ノート：TCP/IPの遅延ボトルネックから、RoCEv2、Queue Pair、PFC、ECNまでの完全な技術スタック。",
+    partial2:"↑ 上記は一部抜粋、完全な内容ではありません",
+    foot:"Cindy奕飒 × AI ペアで構築" }
+};
+let lang = localStorage.getItem("cindy-lang") || "zh";
+const NOTES = { zh: NOTE_ZH, en: NOTE_EN, ja: NOTE_JA };
+function apply(){
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = W[lang][el.dataset.i18n]; if (v) el.textContent = v; });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  document.getElementById("ainPartial1").textContent = W[lang].partial1;
+  document.getElementById("ainPartial2").textContent = W[lang].partial2;
+  document.getElementById("ainNote").innerHTML = NOTES[lang] || NOTES.zh;
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang; localStorage.setItem("cindy-lang", lang); apply();
+}));
+apply();
+addEventListener("pointerdown", e => {
+  for (let i = 0; i < 12; i++){
+    const berry = i % 3 === 0;
+    const el = document.createElement("span");
+    el.className = "bp " + (berry ? "bp-berry" : "bp-spark");
+    if (berry) el.textContent = "🍓";
+    el.style.left = e.clientX + "px"; el.style.top = e.clientY + "px";
+    document.body.appendChild(el);
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 75;
+    el.animate([
+      { transform: "translate(-50%,-50%) scale(1)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${Math.cos(a)*d}px), calc(-50% + ${Math.sin(a)*d + 46}px)) scale(${berry ? 1.15 : 0.35})`, opacity: 0 }
+    ], { duration: 650 + Math.random() * 450, easing: "cubic-bezier(.16,.8,.3,1)" }).onfinish = () => el.remove();
+  }
+});
+</script>
+</body>
+</html>
