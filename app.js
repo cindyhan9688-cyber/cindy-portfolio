@@ -21,7 +21,7 @@ const I18N = {
     "time.sand":"今日沙漏 · 上仓=今天剩余 · 下仓=已流逝","time.now":"此刻","time.today":"今天已流逝","time.since":"距离我们第一次对话",
     "hm.title":"每日训练AI成长热力图","hm.sub":"颜色越深 = 那天我和 AI 聊得越多。数据来自真实会话记录，一格都没编。",
     "hm.less":"少","hm.more":"多",
-    "st.events":"消息事件","st.sessions":"会话","st.days":"活跃天数","st.peak":"单日峰值 · 07-08",
+    "st.events":"消息事件","st.sessions":"会话","st.days":"活跃天数","st.peak":"单日峰值",
     "fin.title":"金融技能 · Finance Arsenal","fin.sub":"重点板块。多条金融分析线 + 数据工具，每条都是一个可复用的分析引擎。",
     "fin.note":"⚠ 以上均为学习研究用途，不构成投资建议。",
     "pj.title":"全部作品","pj.sub":"按真实时间戳排列——每一张卡片，都对应一段我和 AI 的对话。",
@@ -50,7 +50,7 @@ const I18N = {
     "time.sand":"Today's hourglass · top = time left · bottom = elapsed","time.now":"NOW","time.today":"today has flowed","time.since":"since our first conversation",
     "hm.title":"Daily AI-Growth Training Heatmap","hm.sub":"Darker = more conversations with AI that day. Real session data — not a single cell is made up.",
     "hm.less":"less","hm.more":"more",
-    "st.events":"message events","st.sessions":"sessions","st.days":"active days","st.peak":"daily peak · Jul 8",
+    "st.events":"message events","st.sessions":"sessions","st.days":"active days","st.peak":"daily peak",
     "fin.title":"Finance Arsenal","fin.sub":"The featured section. Multiple lines of financial analysis + data tools — each one a reusable engine.",
     "fin.note":"⚠ For study & research only. Not investment advice.",
     "pj.title":"All Works","pj.sub":"Ordered by real timestamps — every card maps to a conversation between me and AI.",
@@ -79,7 +79,7 @@ const I18N = {
     "time.sand":"今日の砂時計 · 上=残り時間 · 下=経過時間","time.now":"いま","time.today":"今日の経過","time.since":"初めての対話から",
     "hm.title":"毎日のAI成長トレーニング・ヒートマップ","hm.sub":"色が濃い = その日AIとたくさん話した。実データのみ、捏造は一マスもなし。",
     "hm.less":"少","hm.more":"多",
-    "st.events":"メッセージ数","st.sessions":"セッション","st.days":"アクティブ日数","st.peak":"1日最大 · 7/8",
+    "st.events":"メッセージ数","st.sessions":"セッション","st.days":"アクティブ日数","st.peak":"1日最大",
     "fin.title":"金融スキル · Finance Arsenal","fin.sub":"注目セクション。複数の金融分析ライン + データツール。それぞれが再利用可能な分析エンジン。",
     "fin.note":"⚠ 学習・研究目的のみ。投資助言ではありません。",
     "pj.title":"すべての作品","pj.sub":"実際のタイムスタンプ順——カード一枚一枚が、私とAIの対話の記録。",
@@ -199,6 +199,7 @@ function applyLang(){
   renderProjects();
   renderTicker();
   renderHoursSplit();
+  renderPeakDate();
   tickClock();
   [["#cfName","ct.name"],["#cfReply","ct.reply"],["#cfMsg","ct.msg"]]
     .forEach(([sel,key]) => { const el = $(sel); if (el) el.placeholder = T(key); });
@@ -228,6 +229,21 @@ function renderHoursSplit(){
   const livePct = (STATS.liveHours / STATS.goal * 100);
   $("#hoursSplit").textContent =
     `= ${T("hours.base")} ${basePct.toFixed(0)}% + ${T("hours.live")} ${livePct.toFixed(2)}%`;
+}
+/* 单日峰值的日期必须跟着 STATS.daily 动态算，不能写死——写死的日期会在数据更新后过期 */
+function renderPeakDate(){
+  const el = $("#stPeakDate");
+  if (!el) return;
+  const entries = Object.entries(STATS.daily);
+  if (!entries.length) return;
+  const [peakKey] = entries.reduce((a, b) => (b[1] > a[1] ? b : a));
+  const d = new Date(peakKey + "T00:00:00");
+  const fmt = {
+    zh: () => `${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`,
+    en: () => d.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+    ja: () => `${d.getMonth()+1}/${d.getDate()}`
+  };
+  el.textContent = (fmt[lang] || fmt.zh)();
 }
 function animateHours(){
   const el = $("#hoursNum"), pctEl = $("#hoursPct"), fill = $("#hoursFill");
